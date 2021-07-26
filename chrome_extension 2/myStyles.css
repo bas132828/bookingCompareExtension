@@ -1,0 +1,16 @@
+
+
+.compare-btn {
+    position: absolute;
+    z-index: 10;
+    width:200px;
+    height: auto;
+    bottom: 10px;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: #0171C2;
+    color: #fff;
+    appearance: none;
+    border: none;
+}
+

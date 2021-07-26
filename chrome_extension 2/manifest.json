@@ -1,6 +1,6 @@
 {
-  "name": "booking listener ext",
-  "description": "my_ext",
+  "name": "booking compare hotels ext",
+  "description": "choose hotels for comparing next",
   "version": "0.1.0",
   "manifest_version": 3,
 
@@ -15,7 +15,8 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.booking.com/index*"],
+      "matches": ["https://www.booking.com/searchresults*", "https://www.booking.com/hotel*"],
+      "css": ["myStyles.css"],
       "js": ["contentScript.js"]
     }
   ],
