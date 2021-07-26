@@ -1,0 +1,42 @@
+{
+  "name": "booking listener ext",
+  "description": "my_ext",
+  "version": "0.1.0",
+  "manifest_version": 3,
+
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "my ext"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.booking.com/index*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "./popup.html",
+    "default_icon": {
+      "16": "./ext_16x16.png",
+      "32": "./ext_32x32.png",
+      "48": "./ext_48x48.png",
+      "128": "./ext_128x128.png"
+    }
+  },
+  "icons": {
+    "16": "./ext_16x16.png",
+    "32": "./ext_32x32.png",
+    "48": "./ext_48x48.png",
+    "128": "./ext_128x128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["https://www.booking.com/*"]
+}

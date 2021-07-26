@@ -1,0 +1,25 @@
+.ce_container--flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 500px;
+  height: 500px;
+  background-color: orangered;
+  z-index: 10;
+}
+.ce_container--name {
+  width: 300px;
+  height: 100px;
+  background-color: orchid;
+  z-index: inherit;
+}
+.change-text--button {
+  width: 100px;
+  height: 50px;
+  background-color: #fff;
+}
