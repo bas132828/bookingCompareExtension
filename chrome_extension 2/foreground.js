@@ -8,9 +8,9 @@ if (
       "#hotellist_inner > div.sr_item.sr_item_new.sr_item_default.sr_property_block"
     )
   );
-  nodesOnViewPort.forEach((el, i) => {
+  nodesOnViewPort.forEach((el) => {
     const html = `
-          <button class='compare-btn btn-${i}}' >Add to compare</button>
+          <button class='compare-btn' >Add to compare</button>
           `;
     el.querySelector("img").insertAdjacentHTML("afterend", html);
   });
@@ -19,6 +19,7 @@ if (
     el.addEventListener("click", function (e) {
       e.preventDefault();
       hotelsPicked.push(this.closest(".sr_item"));
+      console.log(hotelsPicked);
       sendingFn();
     });
   });
@@ -35,7 +36,8 @@ if (
           id: Math.random().toString().slice(2, 8),
         };
       });
-      chrome.storage.sync.set({ hotels: hotelsPickedtoSend });
+      hotelsPickedtoSend.length &&
+        chrome.storage.sync.set({ ["hotels"]: hotelsPickedtoSend });
     }
   }
 }
