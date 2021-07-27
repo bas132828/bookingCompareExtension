@@ -1,16 +1,21 @@
-
-
 .compare-btn {
-    position: absolute;
-    z-index: 10;
-    width:200px;
-    height: auto;
-    bottom: 10px;
-    box-sizing: border-box;
-    font-family: inherit;
-    background-color: #0171C2;
-    color: #fff;
-    appearance: none;
-    border: none;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  background-color: hsl(205, 99%, 38%);
+  color: #fff;
+  appearance: none;
+  border: none;
 }
 
+.compare-btn:hover {
+  background-color: hsl(205, 99%, 28%);
+}
+
+.compare-btn:active {
+  transform: scale(0.95);
+}
