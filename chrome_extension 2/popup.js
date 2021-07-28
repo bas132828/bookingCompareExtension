@@ -29,7 +29,16 @@ chrome.storage.sync.get(["hotels"], function (result) {
       const newHotels = result.hotels.filter((el) => {
         return el.id !== idForDelete;
       });
-      chrome.storage.sync.set({ hotels: newHotels });
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          { hotels: newHotels },
+          function (response) {
+            console.log(response.farewell);
+          }
+        );
+      });
+
       el.closest(".ce_container").remove();
     });
   });

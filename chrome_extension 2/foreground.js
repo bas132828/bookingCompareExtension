@@ -36,8 +36,18 @@ if (
           id: Math.random().toString().slice(2, 8),
         };
       });
-      hotelsPickedtoSend.length &&
-        chrome.storage.sync.set({ ["hotels"]: hotelsPickedtoSend });
+      settingStorage(hotelsPickedtoSend);
     }
   }
 }
+function settingStorage(arr) {
+  arr.length && chrome.storage.sync.set({ ["hotels"]: arr });
+}
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  chrome.storage.sync.set({ hotels: request.hotels });
+  sendResponse({ farewell: "goodbye" });
+  console.log(request.hotels);
+
+  return true;
+});
