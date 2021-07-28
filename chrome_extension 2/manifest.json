@@ -13,7 +13,16 @@
       "description": "my ext"
     }
   },
-
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.booking.com/searchresults*",
+        "https://www.booking.com/hotel*"
+      ],
+      "css": ["foreground-styles.css"],
+      "js": ["foreground.js"]
+    }
+  ],
   "action": {
     "default_popup": "./popup.html",
     "default_icon": {

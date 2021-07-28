@@ -1,3 +1,5 @@
+const hotelsPicked = [];
+
 if (
   document.querySelectorAll(
     "#hotellist_inner > div.sr_item.sr_item_new.sr_item_default.sr_property_block"
@@ -14,7 +16,6 @@ if (
           `;
     el.querySelector("img").insertAdjacentHTML("afterend", html);
   });
-  const hotelsPicked = [];
   document.querySelectorAll(".compare-btn").forEach((el) => {
     el.addEventListener("click", function (e) {
       e.preventDefault();
@@ -40,6 +41,7 @@ if (
     }
   }
 }
+
 function settingStorage(arr) {
   arr.length && chrome.storage.sync.set({ ["hotels"]: arr });
 }
