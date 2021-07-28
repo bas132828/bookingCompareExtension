@@ -47,7 +47,7 @@ function settingStorage(arr) {
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   chrome.storage.sync.set({ hotels: request.hotels });
   sendResponse({ farewell: "goodbye" });
+  console.log(hotelsPicked);
   console.log(request.hotels);
-
   return true;
 });

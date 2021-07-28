@@ -19,27 +19,35 @@ chrome.storage.sync.get(["hotels"], function (result) {
       .querySelector(".popup_container")
       .insertAdjacentHTML("afterbegin", html);
   });
+});
 
+setTimeout(() => {
   const closeButtons = document.querySelectorAll(".delete-btn");
-
+  console.log(closeButtons);
   closeButtons.forEach((el) => {
     el.addEventListener("click", function (e) {
       e.preventDefault();
+
       const idForDelete = this.closest(".ce_container").dataset.id;
-      const newHotels = result.hotels.filter((el) => {
-        return el.id !== idForDelete;
-      });
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { hotels: newHotels },
-          function (response) {
-            console.log(response.farewell);
+
+      chrome.storage.sync.get(["hotels"], function (result) {
+        const newHotels = result.hotels.filter((el) => {
+          return el.id !== idForDelete;
+        });
+        chrome.tabs.query(
+          { active: true, currentWindow: true },
+          function (tabs) {
+            chrome.tabs.sendMessage(
+              tabs[0].id,
+              { hotels: newHotels },
+              function (response) {
+                console.log(response.farewell);
+              }
+            );
           }
         );
       });
-
       el.closest(".ce_container").remove();
     });
   });
-});
+}, 0);
